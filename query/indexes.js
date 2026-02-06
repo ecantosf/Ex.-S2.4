@@ -1,1 +1,1 @@
-db.restaurants.createIndex({ "grades.score": 1 });
+db.restaurants.createIndex({ "grades.score": 1 })
