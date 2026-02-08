@@ -1,7 +1,7 @@
 1. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -45,7 +45,7 @@
 5. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({borough: "Bronx"}, {_id: 0})`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 54
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -70,13 +70,13 @@ db.restaurants.createIndex({ borough: 1 });
 - 🧪 **Query**: `db.restaurants.find({ borough: 'Bronx' }, {_id: 0}).limit(5)`
 - ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 5
-- 🔍 **Documents examined**: 55
+- 🔍 **Documents examined**: 56
 - 🛠️ **Execution stage**: LIMIT
 
 ## 🚨 Performance Issues
 
 ### ⚠️ High Priority Issues
-- ⚠️ Examined 55 docs to return 5 (ratio 11.0:1)
+- ⚠️ Examined 56 docs to return 5 (ratio 11.2:1)
 
 
 7. ## 📊 Query Performance Report
@@ -84,13 +84,13 @@ db.restaurants.createIndex({ borough: 1 });
 - 🧪 **Query**: `db.restaurants.find({borough: "Bronx"}, { _id:0}).skip(5).limit(5)`
 - ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 5
-- 🔍 **Documents examined**: 155
+- 🔍 **Documents examined**: 154
 - 🛠️ **Execution stage**: LIMIT
 
 ## 🚨 Performance Issues
 
 ### ⚠️ High Priority Issues
-- ⚠️ Examined 155 docs to return 5 (ratio 31.0:1)
+- ⚠️ Examined 154 docs to return 5 (ratio 30.8:1)
 
 ### ℹ️ Recommendations
 - ‼️ Filtering on unindexed field 'borough' - performance may suffer.
@@ -155,5 +155,25 @@ db.restaurants.createIndex({ borough: 1 });
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
 ## ✅ No significant issues detected
+
+
+13. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({cuisine: {"$ne": "American"}, "grades.grade": "A", borough: {"$ne": "Brooklyn"}}, {_id: 0}).sort({cuisine: -1})`
+- ⏱️ **Execution time**: 1 ms
+- 📚 **Documents returned**: 318
+- 🔍 **Documents examined**: 664
+- 🛠️ **Execution stage**: SORT
+
+## 🚨 Performance Issues
+
+### ⚠️ High Priority Issues
+- ‼️ Sorting on unindexed field 'cuisine' - performance may suffer.
+
+### 💡 Suggested Indexes
+Consider creating these indexes:
+```javascript
+db.restaurants.createIndex({ cuisine: 1 });
+```
 
 
