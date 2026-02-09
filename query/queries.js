@@ -86,7 +86,7 @@ db.restaurants.find({"address.street": { $in: [null, ""] }}, {_id: 0, address: 1
 db.restaurants.find({"location.coordinates": {"$type": "double"}}, {_id:0, restaurant_id: 1, name: 1, "location.coordinates": 1})
 
 // 30. Mostrar restaurant_id, name i grade per restaurants amb marcador divisible per 7 (resta 0).
-
+db.restaurants.find({"grades.score": { "$mod": [7, 0], "$gt": 0 }}, {_id:0, restaurant_id: 1, name: 1, "grades.score": 1})
 
 // 31. Trobar name, borough, longitud, latitud i cuisine per noms que contenen 'mon'.
 
