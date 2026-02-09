@@ -1,7 +1,7 @@
 1. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -12,7 +12,7 @@
 2. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -23,7 +23,7 @@
 3. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -34,7 +34,7 @@
 4. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, "address.zipcode": 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
@@ -166,7 +166,7 @@
 16. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"name": /Reg/}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 4
 - 🔍 **Documents examined**: 4
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -199,9 +199,20 @@
 19. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({borough : {"$nin": ["Staten Island", "Queens", "Bronx", "Brooklyn"]}}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 305
 - 🔍 **Documents examined**: 305
+- 🛠️ **Execution stage**: PROJECTION_SIMPLE
+
+## ✅ No significant issues detected
+
+
+20. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({"grades.score": {"$lte": 10}}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
+- ⏱️ **Execution time**: 2 ms
+- 📚 **Documents returned**: 612
+- 🔍 **Documents examined**: 612
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
 
 ## ✅ No significant issues detected
