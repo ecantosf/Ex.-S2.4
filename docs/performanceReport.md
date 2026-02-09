@@ -1,7 +1,7 @@
 1. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -12,7 +12,7 @@
 2. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -34,7 +34,7 @@
 4. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, "address.zipcode": 1, _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
@@ -133,7 +133,7 @@
 13. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({cuisine: {"$ne": "American"}, "grades.grade": "A", borough: {"$ne": "Brooklyn"}}, {_id: 0}).sort({cuisine: -1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 3 ms
 - 📚 **Documents returned**: 318
 - 🔍 **Documents examined**: 403
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -155,7 +155,7 @@
 15. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"name": /ces$/}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 2
 - 🔍 **Documents examined**: 2
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -221,7 +221,7 @@
 21. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"$or": [{cuisine: /Seafood/}, {name: /^Wil/}]}, {_id: 0})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 14
 - 🔍 **Documents examined**: 14
 - 🛠️ **Execution stage**: SUBPLAN
