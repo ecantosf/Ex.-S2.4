@@ -71,7 +71,7 @@ db.restaurants.find({"grades.1.date": new Date("2014-08-11T00:00:00Z"), "grades.
 db.restaurants.find({ "location.coordinates": {"$near": {"$geometry": {"type": "Point", "coordinates": [-74, 40.7]}, "$maxDistance": 5000}}}, {_id: 0, restaurant_id: 1, name: 1, "address.street": 1, "address.zipcode": 1, "location.coordinates": 1})
 
 // 25. Ordenar els noms dels restaurants en ordre ascendent, mostrant totes les columnes.
-
+db.restaurants.find({}, {_id: 0}).sort({name: 1})
 
 // 26. Ordenar els noms dels restaurants en ordre descendent, mostrant totes les columnes.
 
