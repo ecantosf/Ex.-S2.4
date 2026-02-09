@@ -12,7 +12,7 @@
 2. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, _id: 0 })`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -34,7 +34,7 @@
 4. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, "address.zipcode": 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_DEFAULT
@@ -133,7 +133,7 @@
 13. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({cuisine: {"$ne": "American"}, "grades.grade": "A", borough: {"$ne": "Brooklyn"}}, {_id: 0}).sort({cuisine: -1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 3 ms
 - 📚 **Documents returned**: 318
 - 🔍 **Documents examined**: 403
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -166,7 +166,7 @@
 16. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"name": /Reg/}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 4
 - 🔍 **Documents examined**: 4
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -199,7 +199,7 @@
 19. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({borough : {"$nin": ["Staten Island", "Queens", "Bronx", "Brooklyn"]}}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 0 ms
 - 📚 **Documents returned**: 305
 - 🔍 **Documents examined**: 305
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -246,10 +246,21 @@
 23. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"grades.1.date": new Date("2014-08-11T00:00:00Z"), "grades.1.grade": "A", "grades.1.score": 9}, {_id: 0, restaurant_id: 1, name: 1, grades: 1})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 2 ms
 - 📚 **Documents returned**: 0
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
+
+## ✅ No significant issues detected
+
+
+24. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({ "location.coordinates": {"$near": {"$geometry": {"type": "Point", "coordinates": [-74, 40.7]}, "$maxDistance": 5000}}}, {_id: 0, restaurant_id: 1, name: 1, "address.street": 1, "address.zipcode": 1, "location.coordinates": 1})`
+- ⏱️ **Execution time**: 1 ms
+- 📚 **Documents returned**: 147
+- 🔍 **Documents examined**: 206
+- 🛠️ **Execution stage**: PROJECTION_DEFAULT
 
 ## ✅ No significant issues detected
 
