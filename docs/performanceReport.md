@@ -1,7 +1,7 @@
 1. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -12,7 +12,7 @@
 2. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -23,7 +23,7 @@
 3. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })`
-- ⏱️ **Execution time**: 0 ms
+- ⏱️ **Execution time**: 1 ms
 - 📚 **Documents returned**: 664
 - 🔍 **Documents examined**: 664
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -133,7 +133,7 @@
 13. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({cuisine: {"$ne": "American"}, "grades.grade": "A", borough: {"$ne": "Brooklyn"}}, {_id: 0}).sort({cuisine: -1})`
-- ⏱️ **Execution time**: 2 ms
+- ⏱️ **Execution time**: 3 ms
 - 📚 **Documents returned**: 318
 - 🔍 **Documents examined**: 403
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -166,7 +166,7 @@
 16. ## 📊 Query Performance Report
 
 - 🧪 **Query**: `db.restaurants.find({"name": /Reg/}, {_id: 0, restaurant_id: 1, name: 1, borough: 1, cuisine: 1})`
-- ⏱️ **Execution time**: 1 ms
+- ⏱️ **Execution time**: 2 ms
 - 📚 **Documents returned**: 4
 - 🔍 **Documents examined**: 4
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
@@ -214,6 +214,17 @@
 - 📚 **Documents returned**: 612
 - 🔍 **Documents examined**: 612
 - 🛠️ **Execution stage**: PROJECTION_SIMPLE
+
+## ✅ No significant issues detected
+
+
+21. ## 📊 Query Performance Report
+
+- 🧪 **Query**: `db.restaurants.find({"$or": [{cuisine: /Seafood/}, {name: /^Wil/}]}, {_id: 0})`
+- ⏱️ **Execution time**: 1 ms
+- 📚 **Documents returned**: 14
+- 🔍 **Documents examined**: 14
+- 🛠️ **Execution stage**: SUBPLAN
 
 ## ✅ No significant issues detected
 
