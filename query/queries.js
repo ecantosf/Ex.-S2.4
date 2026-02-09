@@ -83,7 +83,7 @@ db.restaurants.find({}, {_id: 0}).sort({cuisine: 1, borough: -1})
 db.restaurants.find({"address.street": { $in: [null, ""] }}, {_id: 0, address: 1})
 
 // 29. Seleccionar documents on el valor de `coordinate` és de tipus Double. Mostrar el name, restaurant_id i coordinades.
-
+db.restaurants.find({"location.coordinates": {"$type": "double"}}, {_id:0, restaurant_id: 1, name: 1, "location.coordinates": 1})
 
 // 30. Mostrar restaurant_id, name i grade per restaurants amb marcador divisible per 7 (resta 0).
 
